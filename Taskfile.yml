@@ -1,0 +1,23 @@
+version: '3'
+
+vars:
+  GOFMT_FILES:
+    sh: find . -name '*.go'
+  VERSION:
+    sh: git describe --tags --always
+  PKG_NAME: s3
+  DEV_VERSION: 99.0.0
+  S3_GO_VERSION: main
+  INCLUDE_VERSION_IN_FILENAME: false
+
+tasks:
+  clean-dev:
+    desc: "Removing development version {{.DEV_VERSION}}"
+    cmds:
+      - rm -f terraform-provider-s3_{{.DEV_VERSION}}
+
+  build-dev:
+    desc: "Building development version {{.DEV_VERSION}}"
+    deps: [clean-dev]
+    cmds:
+      - go build -gcflags="all=-N -l" -o terraform-provider-s3_{{.DEV_VERSION}}
