@@ -4,7 +4,7 @@ go 1.22
 toolchain go1.24.1
 
 require (
-	github.com/hashicorp/terraform-plugin-sdk/v2 v2.36.0
+	github.com/hashicorp/terraform-plugin-sdk/v2 v2.36.1
 	github.com/minio/minio-go v6.0.14+incompatible
 )
 
